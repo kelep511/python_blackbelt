@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+
+  </head>
+  <body>
+    {%if trip%}
+    {%for details in trip%}
+    <h2>{{details.destination}}</h2>
+    <label>Planned By: </label>  {{details.me.first_name}} {{details.me.last_name}}<br>
+      <label>Description: </label>  {{details.decription}}<br>
+      <label>Travel Date From: </label> {{details.date_from}}<br>
+      <label>Travel Date To:</label>   {{details.date_to}}<br>
+
+
+    </table>
+  </div>
+  <div id="plans">
+    <h2>Other users who are joining</h2>
+  </div>
+  {%if details.groupie.all%}
+  {%for person in details.groupie.all%}
+  <p>{{person.first_name}} {{person.last_name}}</p>
+  {%endfor%}
+  {%endif%}
+  {%endfor%}
+ {%endif%}
+  <a href="{% url 'travel:index' %}">Home</a>
+  <a href="{% url 'login:logout'%}">Logout</a>
+  </body>
+</html>
